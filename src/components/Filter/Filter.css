@@ -1,0 +1,60 @@
+.filter {
+  width: 15rem;
+  cursor: pointer;
+  position: relative;
+  box-shadow: var(--box-shadow);
+}
+
+.filter > * + * {
+  margin-top: 0.5rem;
+}
+
+.filter .text-wrapper {
+  background-color: var(--dm-dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  border: 2px solid transparent;
+  border-radius: var(--rounded);
+  outline: 2px solid transparent;
+  cursor: inherit;
+}
+
+.filter .list-container {
+  background-color: var(--dm-dark-blue);
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border-radius: var(--rounded);
+  display: flex;
+  align-items: center;
+  /* visibility: hidden;
+  height: 0;
+  overflow: hidden; */
+}
+
+.filter .regions-list {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.filter .region {
+  width: 100%;
+  display: block;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.filter .region:hover {
+  cursor: pointer;
+  background-color: hsl(0, 0%, 52%);
+}
+
+.filter .regions-list > * + * {
+  margin-top: 1rem;
+}

@@ -1,0 +1,34 @@
+.country {
+  background-color: var(--dm-dark-blue);
+  border-radius: var(--rounded);
+  box-shadow: var(--box-shadow);
+}
+
+.country img {
+  display: block;
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+  border-top-left-radius: var(--rounded);
+  border-top-right-radius: var(--rounded);
+}
+
+@media screen and (min-width: 600px) {
+  .country img {
+    height: 12rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .country img {
+    height: 10rem;
+  }
+}
+
+.country .info {
+  padding: 1.5rem;
+}
+
+.country h3 {
+  margin-bottom: 1.5rem;
+}
