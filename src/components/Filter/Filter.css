@@ -2,7 +2,7 @@
   width: 15rem;
   cursor: pointer;
   position: relative;
-  box-shadow: var(--box-shadow);
+  color: var(--clr-text);
 }
 
 .filter > * + * {
@@ -10,7 +10,8 @@
 }
 
 .filter .text-wrapper {
-  background-color: var(--dm-dark-blue);
+  background-color: var(--clr-elements);
+  box-shadow: var(--box-shadow);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,17 +23,15 @@
 }
 
 .filter .list-container {
-  background-color: var(--dm-dark-blue);
   width: 100%;
+  background-color: var(--clr-elements);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--rounded);
   position: absolute;
   top: 100%;
   left: 0;
-  border-radius: var(--rounded);
   display: flex;
   align-items: center;
-  /* visibility: hidden;
-  height: 0;
-  overflow: hidden; */
 }
 
 .filter .regions-list {

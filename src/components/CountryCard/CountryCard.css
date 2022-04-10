@@ -1,5 +1,6 @@
 .country {
-  background-color: var(--dm-dark-blue);
+  background-color: var(--clr-elements);
+  color: var(--clr-text);
   border-radius: var(--rounded);
   box-shadow: var(--box-shadow);
 }

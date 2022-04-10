@@ -1,6 +1,7 @@
 .header {
   box-shadow: var(--bottom-shadow);
-  background-color: var(--dm-dark-blue);
+  background-color: var(--clr-elements);
+  color: var(--clr-text);
   padding: 2rem 0;
 }
 
@@ -14,11 +15,15 @@
   font-size: 1rem;
 }
 
-.header .darkmode-text-wrapper {
+.header .toggle-mode-btn {
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: var(--clr-text);
 }
 
 .header .darkmode-text {
   font-weight: 300;
   margin-left: 0.3rem;
+  text-transform: capitalize;
 }

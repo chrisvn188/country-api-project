@@ -4,9 +4,10 @@ import Header from './components/Header/Header'
 import Search from './components/Search/Search'
 import Filter from './components/Filter/Filter'
 import CountryCard from './components/CountryCard/CountryCard'
+import useLocalStorage from 'use-local-storage'
 
 const url = 'https://restcountries.com/v3.1/all'
-const regions = ['africa', 'americas', 'asia', 'europe', 'oceania']
+const regions = ['all', 'africa', 'americas', 'asia', 'europe', 'oceania']
 
 export default function App() {
   const [countries, setCountries] = useState([])
@@ -15,6 +16,13 @@ export default function App() {
   const [filteredCountries, setFilteredCountries] = useState([])
   const [filterCategory, setFilterCategory] = useState('')
   const [showFilter, setShowFilter] = useState(false)
+  const isDefaultDark = window.matchMedia(
+    '(prefers-color-scheme: dark)'
+  ).matches
+  const [theme, setTheme] = useLocalStorage(
+    'theme',
+    isDefaultDark ? 'dark' : 'light'
+  )
 
   // Fetch Data
   useEffect(() => {
@@ -42,7 +50,7 @@ export default function App() {
   // Filtering
   useEffect(() => {
     if (countries.length > 0) {
-      if (filterCategory) {
+      if (filterCategory && filterCategory !== 'all') {
         const filtered = countries.filter(country => {
           return country.region.toLowerCase() === filterCategory
         })
@@ -65,9 +73,14 @@ export default function App() {
     setShowFilter(prevShowFilter => !prevShowFilter)
   }
 
+  function switchTheme() {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    setTheme(newTheme)
+  }
+
   return (
-    <div className='site-wrapper'>
-      <Header />
+    <div className='site-wrapper' data-theme={theme}>
+      <Header switchTheme={switchTheme} theme={theme} />
       <main className='main'>
         <div className='container'>
           <header>
@@ -79,11 +92,15 @@ export default function App() {
               showFilter={showFilter}
             />
           </header>
-          <ul className='countries'>
-            {searchedCountries.map(country => (
-              <CountryCard key={country.name.common} country={country} />
-            ))}
-          </ul>
+          {searchedCountries.length > 0 ? (
+            <ul className='countries'>
+              {searchedCountries.map(country => (
+                <CountryCard key={country.name.common} country={country} />
+              ))}
+            </ul>
+          ) : (
+            <p>There is no countries...</p>
+          )}
         </div>
       </main>
     </div>

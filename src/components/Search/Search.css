@@ -20,13 +20,14 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
+  color: var(--clr-text);
 }
 
 .search input {
   appearance: none;
   font: inherit;
-  color: var(--white);
-  background-color: var(--dm-dark-blue);
+  color: var(--clr-text);
+  background-color: var(--clr-elements);
   width: 100%;
   padding: 1rem 2rem;
   text-indent: 2rem;
@@ -43,5 +44,5 @@
 }
 
 .search input::placeholder {
-  color: var(--white);
+  color: var(--clr-input);
 }
