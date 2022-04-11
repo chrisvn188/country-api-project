@@ -38,7 +38,7 @@
 }
 
 .search:focus-within {
-  outline: 2px solid purple;
+  outline: var(--clr-focus);
   outline-offset: 5px;
   border-radius: var(--rounded);
 }

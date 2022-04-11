@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
-import Header from './components/Header/Header'
-import Search from './components/Search/Search'
-import Filter from './components/Filter/Filter'
-import CountryCard from './components/CountryCard/CountryCard'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import useLocalStorage from 'use-local-storage'
+import Header from './components/Header/Header'
+import Countries from './pages/Countries/Countries'
+import DetailsPage from './pages/DetailsPage/DetailsPage'
+import ErrorPage from './pages/ErrorPage/ErrorPage'
 
 const url = 'https://restcountries.com/v3.1/all'
 const regions = ['all', 'africa', 'americas', 'asia', 'europe', 'oceania']
@@ -14,8 +15,8 @@ export default function App() {
   const [searchingTerm, setSearchingTerm] = useState('')
   const [searchedCountries, setSearchedCountries] = useState([])
   const [filteredCountries, setFilteredCountries] = useState([])
-  const [filterCategory, setFilterCategory] = useState('')
   const [showFilter, setShowFilter] = useState(false)
+  const [filterCategory, setFilterCategory] = useLocalStorage('filter', '')
   const isDefaultDark = window.matchMedia(
     '(prefers-color-scheme: dark)'
   ).matches
@@ -67,6 +68,7 @@ export default function App() {
 
   function handleFilter(e) {
     setFilterCategory(e.target.dataset.region)
+    handleShowFilter()
   }
 
   function handleShowFilter() {
@@ -79,30 +81,31 @@ export default function App() {
   }
 
   return (
-    <div className='site-wrapper' data-theme={theme}>
-      <Header switchTheme={switchTheme} theme={theme} />
-      <main className='main'>
-        <div className='container'>
-          <header>
-            <Search handleSearch={handleSearch} />
-            <Filter
-              handleFilter={handleFilter}
-              handleShowFilter={handleShowFilter}
-              regions={regions}
-              showFilter={showFilter}
-            />
-          </header>
-          {searchedCountries.length > 0 ? (
-            <ul className='countries'>
-              {searchedCountries.map(country => (
-                <CountryCard key={country.name.common} country={country} />
-              ))}
-            </ul>
-          ) : (
-            <p>There is no countries...</p>
-          )}
-        </div>
-      </main>
-    </div>
+    <Router>
+      <div className='site-wrapper' data-theme={theme}>
+        <Header switchTheme={switchTheme} theme={theme} />
+        <Routes>
+          <Route
+            index
+            element={
+              <Countries
+                handleFilter={handleFilter}
+                handleSearch={handleSearch}
+                showFilter={showFilter}
+                searchedCountries={searchedCountries}
+                regions={regions}
+                handleShowFilter={handleShowFilter}
+                filterCategory={filterCategory}
+                setShowFilter={setShowFilter}
+              />
+            }
+          />
+          <Route path='country'>
+            <Route path=':name' element={<DetailsPage />} />
+          </Route>
+          <Route path='*' element={<ErrorPage />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }

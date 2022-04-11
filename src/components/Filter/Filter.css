@@ -1,6 +1,5 @@
 .filter {
   width: 15rem;
-  cursor: pointer;
   position: relative;
   color: var(--clr-text);
 }
@@ -9,17 +8,30 @@
   margin-top: 0.5rem;
 }
 
-.filter .text-wrapper {
-  background-color: var(--clr-elements);
-  box-shadow: var(--box-shadow);
+.filter .filter-btn {
+  font: inherit;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  background-color: var(--clr-elements);
+  box-shadow: var(--box-shadow);
+  color: inherit;
   padding: 1rem 1.5rem;
-  border: 2px solid transparent;
+  border: none;
   border-radius: var(--rounded);
-  outline: 2px solid transparent;
-  cursor: inherit;
+  border: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.filter .filter-btn:focus {
+  outline: var(--clr-focus);
+  outline-offset: 5px;
+}
+
+.filter .filter-text {
+  text-transform: capitalize;
 }
 
 .filter .list-container {
@@ -51,7 +63,7 @@
 
 .filter .region:hover {
   cursor: pointer;
-  background-color: hsl(0, 0%, 52%);
+  background-color: var(--clr-hover);
 }
 
 .filter .regions-list > * + * {

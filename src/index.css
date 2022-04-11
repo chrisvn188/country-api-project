@@ -4,6 +4,7 @@
   --bottom-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.125);
   --box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.125);
 
+  --rounded-sm: 0.3rem;
   --rounded: 0.5rem;
 
   --select-border: #777;
@@ -14,6 +15,8 @@
   --clr-background: hsl(0, 0%, 98%);
   --clr-input: hsl(0, 0%, 52%);
   --clr-text: hsl(200, 15%, 8%);
+  --clr-hover: hsl(0, 0%, 90%);
+  --clr-focus: 2px solid blue;
 }
 
 [data-theme='dark'] {
@@ -21,6 +24,8 @@
   --clr-background: hsl(207, 26%, 17%);
   --clr-text: hsl(0, 0%, 100%);
   --clr-input: var(--clr-text);
+  --clr-hover: hsl(209, 23%, 33%);
+  --clr-focus: 2px solid purple;
 }
 
 *,
@@ -34,11 +39,27 @@
 body {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
 }
 
 .container {
-  padding: 0 2rem;
+  padding: 0 1.5rem;
 }
 
 @media screen and (min-width: 600px) {

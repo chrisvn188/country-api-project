@@ -3,6 +3,7 @@
   color: var(--clr-text);
   border-radius: var(--rounded);
   box-shadow: var(--box-shadow);
+  cursor: pointer;
 }
 
 .country img {
