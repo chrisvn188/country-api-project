@@ -1,8 +1,8 @@
 .header {
-  box-shadow: var(--bottom-shadow);
   background-color: var(--clr-elements);
   color: var(--clr-text);
   padding: 2rem 0;
+  box-shadow: var(--bottom-shadow);
 }
 
 .header .content {

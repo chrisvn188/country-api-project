@@ -1,6 +1,6 @@
 import React from 'react'
 import './Header.css'
-import { BsMoon, BsMoonFill } from 'react-icons/bs'
+import { BsMoonFill } from 'react-icons/bs'
 
 export default function Header({ switchTheme, theme }) {
   return (
