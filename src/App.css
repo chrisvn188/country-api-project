@@ -2,6 +2,7 @@
   min-height: 100vh;
   background-color: var(--clr-background);
   color: var(--clr-text);
+  overflow: hidden;
 }
 
 .main {
@@ -12,46 +13,5 @@
 @media screen and (min-width: 900px) {
   .main {
     padding: 5rem 0;
-  }
-}
-
-.main header {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-@media screen and (min-width: 900px) {
-  .main header {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-
-.main .countries {
-  list-style: none;
-  display: grid;
-  gap: 2rem;
-  margin-top: 5rem;
-}
-
-@media screen and (min-width: 600px) {
-  .main .countries {
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
-    margin-top: 4rem;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .main .countries {
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
-    margin-top: 5rem;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .main .countries {
-    grid-template-columns: repeat(4, minmax(100px, 1fr));
-    margin-top: 6rem;
   }
 }

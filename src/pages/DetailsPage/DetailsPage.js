@@ -8,10 +8,19 @@ export default function DetailsPage() {
   const [country, setCountry] = useState(null)
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${name}`)
+    var controller = new AbortController()
+    var signal = controller.signal
+    fetch(`https://restcountries.com/v3.1/name/${name}`, { signal })
       .then(res => res.json())
       .then(json => setCountry(json[0]))
+    return () => {
+      controller.abort()
+    }
   }, [name])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className='details'>
@@ -20,7 +29,7 @@ export default function DetailsPage() {
           <BsArrowLeft />
           Back
         </Link>
-        {country && (
+        {country ? (
           <div className='country-details'>
             <div className='flag-container'>
               <img
@@ -89,6 +98,8 @@ export default function DetailsPage() {
               </div>
             </div>
           </div>
+        ) : (
+          <p>There is no country...</p>
         )}
       </div>
     </div>

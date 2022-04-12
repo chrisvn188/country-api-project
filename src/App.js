@@ -84,27 +84,29 @@ export default function App() {
     <Router>
       <div className='site-wrapper' data-theme={theme}>
         <Header switchTheme={switchTheme} theme={theme} />
-        <Routes>
-          <Route
-            index
-            element={
-              <Countries
-                handleFilter={handleFilter}
-                handleSearch={handleSearch}
-                showFilter={showFilter}
-                searchedCountries={searchedCountries}
-                regions={regions}
-                handleShowFilter={handleShowFilter}
-                filterCategory={filterCategory}
-                setShowFilter={setShowFilter}
-              />
-            }
-          />
-          <Route path='country'>
-            <Route path=':name' element={<DetailsPage />} />
-          </Route>
-          <Route path='*' element={<ErrorPage />} />
-        </Routes>
+        <main className='main'>
+          <Routes>
+            <Route
+              index
+              element={
+                <Countries
+                  handleFilter={handleFilter}
+                  handleSearch={handleSearch}
+                  showFilter={showFilter}
+                  searchedCountries={searchedCountries}
+                  regions={regions}
+                  handleShowFilter={handleShowFilter}
+                  filterCategory={filterCategory}
+                  setShowFilter={setShowFilter}
+                />
+              }
+            />
+            <Route path='country'>
+              <Route path=':name' element={<DetailsPage />} />
+            </Route>
+            <Route path='*' element={<ErrorPage />} />
+          </Routes>
+        </main>
       </div>
     </Router>
   )

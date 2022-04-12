@@ -1,13 +1,3 @@
-.details {
-  padding: 3rem 0;
-  line-height: 2;
-}
-@media screen and (min-width: 1200px) {
-  .details {
-    padding: 5rem 0;
-  }
-}
-
 .details .go-back-link {
   background-color: var(--clr-elements);
   border-radius: var(--rounded-sm);

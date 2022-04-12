@@ -1,0 +1,40 @@
+.countries {
+  list-style: none;
+  display: grid;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+
+@media screen and (min-width: 600px) {
+  .countries {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    margin-top: 4rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .countries {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    margin-top: 5rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .countries {
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    margin-top: 6rem;
+  }
+}
+
+.countries-page header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media screen and (min-width: 900px) {
+  .countries-page header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
